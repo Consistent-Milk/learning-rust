@@ -5,6 +5,9 @@
         ".\\_3_common_concepts\\_1_new_variables\\Cargo.toml",
         ".\\_3_common_concepts\\_2_data_types\\Cargo.toml",
         ".\\_3_common_concepts\\_3_functions\\Cargo.toml",
-        ".\\_3_common_concepts\\_4_control_flow\\Cargo.toml"
+        ".\\_3_common_concepts\\_4_control_flow\\Cargo.toml",
+        ".\\_4_understanding_ownership\\_1_ownership\\Cargo.toml",
+        ".\\_4_understanding_ownership\\_2_references_and_borrowing\\Cargo.toml",
+        ".\\_4_understanding_ownership\\_3_slice_reference\\Cargo.toml"
     ]
 }
