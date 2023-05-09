@@ -8,6 +8,9 @@
         ".\\_3_common_concepts\\_4_control_flow\\Cargo.toml",
         ".\\_4_understanding_ownership\\_1_ownership\\Cargo.toml",
         ".\\_4_understanding_ownership\\_2_references_and_borrowing\\Cargo.toml",
-        ".\\_4_understanding_ownership\\_3_slice_reference\\Cargo.toml"
+        ".\\_4_understanding_ownership\\_3_slice_reference\\Cargo.toml",
+        ".\\_5_struct\\_1_defining_structs\\Cargo.toml",
+        ".\\_5_struct\\_2_example_struct_program\\Cargo.toml",
+        ".\\_5_struct\\_3_struct_method_syntax\\Cargo.toml"
     ]
 }
