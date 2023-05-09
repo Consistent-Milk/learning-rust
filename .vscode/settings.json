@@ -1,0 +1,8 @@
+{
+    "rust-analyzer.linkedProjects": [
+        ".\\_1_hello_cargo\\Cargo.toml",
+        ".\\_2_guessing_game\\Cargo.toml",
+        ".\\_3_common_concepts\\_1_new_variables\\Cargo.toml",
+        ".\\_3_common_concepts\\_2_data_types\\Cargo.toml"
+    ]
+}
