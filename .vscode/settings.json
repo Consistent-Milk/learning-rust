@@ -11,6 +11,8 @@
         ".\\_4_understanding_ownership\\_3_slice_reference\\Cargo.toml",
         ".\\_5_struct\\_1_defining_structs\\Cargo.toml",
         ".\\_5_struct\\_2_example_struct_program\\Cargo.toml",
-        ".\\_5_struct\\_3_struct_method_syntax\\Cargo.toml"
+        ".\\_5_struct\\_3_struct_method_syntax\\Cargo.toml",
+        ".\\_6_enum_and_pattern_matching\\_1_defining_enums\\Cargo.toml",
+        ".\\_6_enum_and_pattern_matching\\_2_match_construct\\Cargo.toml"
     ]
 }
