@@ -13,6 +13,11 @@
         ".\\_5_struct\\_2_example_struct_program\\Cargo.toml",
         ".\\_5_struct\\_3_struct_method_syntax\\Cargo.toml",
         ".\\_6_enum_and_pattern_matching\\_1_defining_enums\\Cargo.toml",
-        ".\\_6_enum_and_pattern_matching\\_2_match_construct\\Cargo.toml"
+        ".\\_6_enum_and_pattern_matching\\_2_match_construct\\Cargo.toml",
+        ".\\_7_crates_and_packages\\_1_crates\\Cargo.toml",
+        ".\\_7_crates_and_packages\\_2_modules\\Cargo.toml",
+        ".\\_7_crates_and_packages\\_3_paths\\Cargo.toml",
+        ".\\_7_crates_and_packages\\_4_use_keyword\\Cargo.toml",
+        ".\\_7_crates_and_packages\\_5_separating_modules\\Cargo.toml"
     ]
 }
