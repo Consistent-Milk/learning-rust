@@ -16,13 +16,17 @@ impl Solution {
     }
 }
 
-#[test]
-fn test() {
-    let nums = vec![2, 7, 11, 15];
-    let target = 9;
-    assert_eq!(Solution::two_sum(nums, target), vec![0, 1]);
+fn test() -> bool {
+    let nums: Vec<i32> = vec![2, 7, 11, 15];
+    let target: i32 = 9;
+    return Solution::two_sum(nums, target) == vec![0, 1];
 }
 
 fn main() {
-    println!("Hello, world!");
+    let result: bool = test();
+
+    match result {
+        true => println!("Test passed."),
+        _ => println!("Test failed."),
+    }
 }

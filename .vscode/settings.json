@@ -23,6 +23,7 @@
         ".\\_8_std_collections\\_3_hashmap\\Cargo.toml",
         ".\\_11_io_project\\minigrep\\Cargo.toml",
         ".\\Leetcode\\_001_two_sum\\Cargo.toml",
-        ".\\Leetcode\\_002_add_two_numbers\\Cargo.toml"
+        ".\\Leetcode\\_002_add_two_numbers\\Cargo.toml",
+        ".\\Leetcode\\_003_longest_substring_without_repeating_characters\\Cargo.toml"
     ]
 }
