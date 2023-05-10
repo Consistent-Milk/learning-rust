@@ -21,6 +21,8 @@
         ".\\_8_std_collections\\_1_vector\\Cargo.toml",
         ".\\_8_std_collections\\_2_string\\Cargo.toml",
         ".\\_8_std_collections\\_3_hashmap\\Cargo.toml",
-        ".\\_11_io_project\\minigrep\\Cargo.toml"
+        ".\\_11_io_project\\minigrep\\Cargo.toml",
+        ".\\Leetcode\\_001_two_sum\\Cargo.toml",
+        ".\\Leetcode\\_002_add_two_numbers\\Cargo.toml"
     ]
 }
