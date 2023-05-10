@@ -29,7 +29,8 @@ fn five() -> i32 {
 // This will result in a compilation warning but not a 'panic'
 fn five_explicit() -> i32 {
     return 5;
-    6
+    // uncomment the next line
+    // 6
 }
 
 fn plus_one(x: i32) -> i32 {
