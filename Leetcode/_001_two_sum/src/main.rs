@@ -7,14 +7,20 @@ impl Solution {
         let mut hm: HashMap<i32, i32> = HashMap::new();
 
         for (i, &num) in nums.iter().enumerate() {
-            let check: Option<&i32> = hm.get(&(target - num));
-
-            match check {
-                Some(&j) => return vec![j, i as i32],
-                None => (),
+            if let Some(&j) = hm.get(&(target - num)) {
+                return vec![j, i as i32];
+            } else {
+                hm.insert(num, i as i32);
             }
 
-            hm.insert(num, i as i32);
+            // let check: Option<&i32> = hm.get(&(target - num));
+
+            // match check {
+            //     Some(&j) => return vec![j, i as i32],
+            //     None => (),
+            // }
+
+            // hm.insert(num, i as i32);
         }
         return vec![-1, -1];
     }
