@@ -26,6 +26,7 @@
         ".\\Leetcode\\_002_add_two_numbers\\Cargo.toml",
         ".\\Leetcode\\_003_longest_substring_without_repeating_characters\\Cargo.toml",
         ".\\Leetcode\\_004_median_of_two_sorted_arrays\\Cargo.toml",
+        ".\\Leetcode\\_005_longest_palindromic_substring\\Cargo.toml",
         ".\\Self_Project-Rust_Math\\rust_math\\Cargo.toml",
         ".\\Self_Project-Rust_Math\\rust_math_lib\\Cargo.toml"
     ]
