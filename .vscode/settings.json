@@ -21,12 +21,16 @@
         ".\\_8_std_collections\\_1_vector\\Cargo.toml",
         ".\\_8_std_collections\\_2_string\\Cargo.toml",
         ".\\_8_std_collections\\_3_hashmap\\Cargo.toml",
+        ".\\_9_error_handling\\Cargo.toml",
         ".\\_11_io_project\\minigrep\\Cargo.toml",
         ".\\Leetcode\\_001_two_sum\\Cargo.toml",
         ".\\Leetcode\\_002_add_two_numbers\\Cargo.toml",
         ".\\Leetcode\\_003_longest_substring_without_repeating_characters\\Cargo.toml",
         ".\\Leetcode\\_004_median_of_two_sorted_arrays\\Cargo.toml",
         ".\\Leetcode\\_005_longest_palindromic_substring\\Cargo.toml",
+        ".\\Exercism\\_001_hello_world\\Cargo.toml",
+        ".\\Exercism\\_002_reverse_string\\Cargo.toml",
+        ".\\Exercism\\_003_gigasecond\\Cargo.toml",
         ".\\Self_Project-Rust_Math\\rust_math\\Cargo.toml",
         ".\\Self_Project-Rust_Math\\rust_math_lib\\Cargo.toml"
     ]

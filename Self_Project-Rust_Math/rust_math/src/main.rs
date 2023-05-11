@@ -1,4 +1,6 @@
 use rust_math::Algorithms;
+use rust_math::*;
+
 fn main() {
     let v = vec![1, 2, 3, 4, 10];
 
@@ -8,6 +10,8 @@ fn main() {
     for c in s.chars() {
         s_vec.push(c);
     }
+
+    let _l = list![1, 2, 3];
 
     let result = Algorithms::largest(&v);
     let result_s = Algorithms::largest(&s_vec);
