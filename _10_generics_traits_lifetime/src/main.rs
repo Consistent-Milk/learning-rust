@@ -35,6 +35,15 @@ fn main() {
         "The distance of point q from origin is: {:.2}",
         q.distance_from_origin()
     );
+
+    let tweet: Tweet = Tweet {
+        username: String::from("horse_ebooks"),
+        content: String::from("of course, as you probably already know, people"),
+        reply: false,
+        retweet: false,
+    };
+
+    println!("1 new tweet: {}", tweet.summarize());
 }
 
 #[test]
