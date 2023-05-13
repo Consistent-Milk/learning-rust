@@ -32,8 +32,10 @@
         ".\\Exercism\\_001_hello_world\\Cargo.toml",
         ".\\Exercism\\_002_reverse_string\\Cargo.toml",
         ".\\Exercism\\_003_gigasecond\\Cargo.toml",
+        ".\\Exercism\\_004_clock\\Cargo.toml",
         ".\\Self_Project-Rust_Math\\rust_math\\Cargo.toml",
         ".\\Self_Project-Rust_Math\\rust_math_lib\\Cargo.toml",
-        ".\\project_multithreaded_web_server\\Cargo.toml"
+        ".\\project_multithreaded_web_server\\Cargo.toml",
+        ".\\Rust_By_Example\\Cargo.toml"
     ]
 }
