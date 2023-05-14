@@ -36,6 +36,7 @@
         ".\\Self_Project-Rust_Math\\rust_math\\Cargo.toml",
         ".\\Self_Project-Rust_Math\\rust_math_lib\\Cargo.toml",
         ".\\project_multithreaded_web_server\\Cargo.toml",
-        ".\\Rust_By_Example\\Cargo.toml"
+        ".\\Rust_By_Example\\Cargo.toml",
+        ".\\princeton_algorithms_course\\Cargo.toml"
     ]
 }
