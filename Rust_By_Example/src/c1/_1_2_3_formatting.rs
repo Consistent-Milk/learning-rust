@@ -34,3 +34,21 @@ pub struct Color {
     pub green: u8,
     pub blue: u8,
 }
+
+impl Display for Color {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        return write!(
+            f,
+            "RGB ({}, {}, {}) 0x{:0>2X}{:0>2X}{:0>2X}",
+            self.red, self.green, self.blue, self.red, self.green, self.blue
+        );
+    }
+}
+
+impl fmt::UpperHex for Color {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        let val = self.red;
+
+        return fmt::UpperHex::fmt(&val, f);
+    }
+}
