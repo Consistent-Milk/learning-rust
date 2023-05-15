@@ -38,7 +38,7 @@ impl QuickFindUF {
 
 impl Display for QuickFindUF {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        let vec = &self.array;
+        let vec: &Vec<i32> = &self.array;
 
         write!(f, "[")?;
 
@@ -54,7 +54,7 @@ impl Display for QuickFindUF {
         }
 
         // Close the opened bracket and return a fmt::Result value.
-        write!(f, "]")
+        return write!(f, "]");
     }
 }
 
@@ -67,7 +67,7 @@ pub struct QuickUnionUF {
 impl QuickUnionUF {
     // Set id of each object to itself (N array accesses)
     pub fn new(n: i32) -> Self {
-        let mut v = Vec::new();
+        let mut v: Vec<i32> = Vec::new();
 
         for i in 0..n {
             v.push(i);
@@ -103,7 +103,7 @@ impl QuickUnionUF {
 
 impl Display for QuickUnionUF {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        let vec = &self.array;
+        let vec: &Vec<i32> = &self.array;
 
         write!(f, "[")?;
 

@@ -10,7 +10,7 @@ fn main() {
 
     println!("{:?}", v);
 
-    let mut qf = QuickFindUF::new(n);
+    let mut qf: QuickFindUF = QuickFindUF::new(n);
 
     qf.union(0, 1);
     qf.union(1, 3);
