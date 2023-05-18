@@ -267,8 +267,8 @@ mod tests {
 
     #[test]
     fn insert_at_tail_works() {
-        let mut list = LinkedList::<i32>::new();
-        let second_value = 2;
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
+        let second_value: i32 = 2;
         list.insert_at_tail(1);
         list.insert_at_tail(second_value);
         println!("Linked List is {}", list);
@@ -292,8 +292,8 @@ mod tests {
 
     #[test]
     fn insert_at_ith_can_add_to_tail() {
-        let mut list = LinkedList::<i32>::new();
-        let second_value = 2;
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
+        let second_value: i32 = 2;
         list.insert_at_ith(0, 0);
         list.insert_at_ith(1, second_value);
         println!("Linked List is {}", list);
@@ -421,9 +421,9 @@ mod tests {
 
     #[test]
     fn delete_head_works() {
-        let mut list = LinkedList::<i32>::new();
-        let first_value = 1;
-        let second_value = 2;
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
+        let first_value: i32 = 1;
+        let second_value: i32 = 2;
         list.insert_at_tail(first_value);
         list.insert_at_tail(second_value);
         match list.delete_head() {
@@ -440,9 +440,9 @@ mod tests {
 
     #[test]
     fn delete_ith_can_delete_at_tail() {
-        let mut list = LinkedList::<i32>::new();
-        let first_value = 1;
-        let second_value = 2;
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
+        let first_value: i32 = 1;
+        let second_value: i32 = 2;
         list.insert_at_tail(first_value);
         list.insert_at_tail(second_value);
         match list.delete_ith(1) {
@@ -455,9 +455,9 @@ mod tests {
 
     #[test]
     fn delete_ith_can_delete_at_head() {
-        let mut list = LinkedList::<i32>::new();
-        let first_value = 1;
-        let second_value = 2;
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
+        let first_value: i32 = 1;
+        let second_value: i32 = 2;
         list.insert_at_tail(first_value);
         list.insert_at_tail(second_value);
         match list.delete_ith(0) {
@@ -470,10 +470,10 @@ mod tests {
 
     #[test]
     fn delete_ith_can_delete_in_middle() {
-        let mut list = LinkedList::<i32>::new();
-        let first_value = 1;
-        let second_value = 2;
-        let third_value = 3;
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
+        let first_value: i32 = 1;
+        let second_value: i32 = 2;
+        let third_value: i32 = 3;
         list.insert_at_tail(first_value);
         list.insert_at_tail(second_value);
         list.insert_at_tail(third_value);
@@ -490,7 +490,7 @@ mod tests {
 
     #[test]
     fn create_numeric_list() {
-        let mut list = LinkedList::<i32>::new();
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
         list.insert_at_tail(1);
         list.insert_at_tail(2);
         list.insert_at_tail(3);
@@ -500,7 +500,7 @@ mod tests {
 
     #[test]
     fn create_string_list() {
-        let mut list_str = LinkedList::<String>::new();
+        let mut list_str: LinkedList<String> = LinkedList::<String>::new();
         list_str.insert_at_tail("A".to_string());
         list_str.insert_at_tail("B".to_string());
         list_str.insert_at_tail("C".to_string());
@@ -510,22 +510,22 @@ mod tests {
 
     #[test]
     fn get_by_index_in_numeric_list() {
-        let mut list = LinkedList::<i32>::new();
+        let mut list: LinkedList<i32> = LinkedList::<i32>::new();
         list.insert_at_tail(1);
         list.insert_at_tail(2);
         println!("Linked List is {}", list);
-        let retrived_item = list.get(1);
+        let retrived_item: Option<&i32> = list.get(1);
         assert!(retrived_item.is_some());
         assert_eq!(2, *retrived_item.unwrap());
     }
 
     #[test]
     fn get_by_index_in_string_list() {
-        let mut list_str = LinkedList::<String>::new();
+        let mut list_str: LinkedList<String> = LinkedList::<String>::new();
         list_str.insert_at_tail("A".to_string());
         list_str.insert_at_tail("B".to_string());
         println!("Linked List is {}", list_str);
-        let retrived_item = list_str.get(1);
+        let retrived_item: Option<&String> = list_str.get(1);
         assert!(retrived_item.is_some());
         assert_eq!("B", *retrived_item.unwrap());
     }
