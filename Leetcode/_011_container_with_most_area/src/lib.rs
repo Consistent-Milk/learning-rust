@@ -7,7 +7,7 @@ impl Solution {
         let mut r: usize = height.len() - 1;
 
         while l < r {
-            max = i32::max(i32::min(height[l], height[r])* (r-l) as i32, max);
+            max = i32::max(i32::min(height[l], height[r]) * (r - l) as i32, max);
 
             if height[l] < height[r] {
                 l += 1;

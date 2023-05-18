@@ -2,9 +2,9 @@ pub struct Algorithms;
 
 impl Algorithms {
     pub fn largest<T: PartialOrd>(list: &[T]) -> &T {
-        let mut largest = &list[0];
+        let mut largest: &T = &list[0];
 
-        for item in list {
+        for item in list.iter() {
             if item > largest {
                 largest = item;
             }
@@ -15,4 +15,5 @@ impl Algorithms {
 }
 
 mod list;
+pub mod data_structures;
 pub use crate::list::*;
