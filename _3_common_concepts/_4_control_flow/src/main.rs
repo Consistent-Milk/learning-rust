@@ -1,3 +1,4 @@
+use _4_control_flow::*;
 fn main() {
     println!("\n");
 
@@ -90,46 +91,7 @@ fn main() {
     println!("{fahrenheit} fahrenheit = {celsius:.2} degree celsius");
 
     println!("\n");
-}
 
-// This can be done if we know the size of array beforehand
-// otherwise we might cause a 'panic' by trying to access
-// an out of bounds value or we might not access all of the values
-// by setting a higher or lower threshold for index respectively
-fn iterate_explicit() {
-    let a: [i32; 5] = [10, 20, 30, 40, 50];
-    let mut index: usize = 0;
-
-    while index < 5 {
-        println!("(Explicit)The value at index {index} is: {}", a[index]);
-
-        index += 1;
-    }
-}
-
-// This is safer as we are guarranted to access all values
-// of the array and also we are sure that we will not access out of bounds value
-fn iterate_implicit() {
-    let a: [i32; 5] = [10, 20, 30, 40, 50];
-    let mut index: i32 = 0;
-
-    for element in a {
-        println!("(Implicit)The value at index {index} is {element}.");
-        index += 1;
-    }
-}
-
-// (1..4) is a Range which generates 1,2,3 but not 4
-// rev() method reverses this range and instead generates 3,2,1
-fn for_liftoff() {
-    for number in (1..4).rev() {
-        println!("{number}");
-    }
-
-    println!("LIFTOFF!");
-}
-
-fn fahrenheit_to_celsius(x: f64) -> f64 {
-    let y: f64 = (x - 32.0) * (5.0 / 9.0);
-    y
+    let nth: u8 = 4;
+    println!("{}th Fibonacci number is = {}", nth + 1, fib(nth));
 }
