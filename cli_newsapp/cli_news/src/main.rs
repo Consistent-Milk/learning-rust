@@ -5,7 +5,7 @@ use newsapi::{Article, Country, Endpoint, NewsAPI};
 use std::error::Error;
 
 fn render_articles(articles: &Vec<Article>) {
-    let theme = theme::default();
+    let theme: termimad::MadSkin = theme::default();
     theme.print_text("# Top headlines\n\n");
     for i in articles {
         theme.print_text(&format!("`{}`", i.title()));
