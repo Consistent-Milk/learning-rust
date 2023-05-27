@@ -54,8 +54,8 @@ where
 #[derive(Deserialize, Debug)]
 pub struct Article {
     #[serde(deserialize_with = "deserialize_null_default")]
-    pub title: String,
-    pub url: String,
+    title: String,
+    url: String,
 }
 
 impl Article {
