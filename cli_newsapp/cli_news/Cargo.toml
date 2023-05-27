@@ -7,6 +7,8 @@ edition = "2021"
 
 [dependencies]
 colour = "0.7.0"
+crossterm = "0.26.1"
 dotenv = "0.15.0"
-newsapi = { path = "./newsapi" }
+newsapi = { path = "./newsapi", features = ["async"] }
 termimad = "0.23.0"
+tokio = { version = "1.28.1", features = ["full"] }

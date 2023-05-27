@@ -1,6 +1,6 @@
 #[cfg(feature = "async")]
 use reqwest::Method;
-use serde::{Deserialize, Deserializer};
+use serde::Deserialize;
 use url::Url;
 
 const BASE_URL: &str = "https://newsapi.org/v2";
@@ -12,7 +12,7 @@ pub enum NewsApiError {
     RequestFailed(#[from] ureq::Error),
     #[error("Failed converting response to string")]
     FailedResponseToString(#[from] std::io::Error),
-    #[error("Article parsing failed")]
+    #[error("Article Parsing failed")]
     ArticleParseFailed(#[from] serde_json::Error),
     #[error("Url parsing failed")]
     UrlParsing(#[from] url::ParseError),
@@ -37,25 +37,9 @@ impl NewsAPIResponse {
 }
 
 #[derive(Deserialize, Debug)]
-pub struct Articles {
-    pub articles: Vec<Article>,
-}
-
-fn deserialize_null_default<'de, D, T>(deserializer: D) -> Result<T, D::Error>
-where
-    T: Default + Deserialize<'de>,
-    D: Deserializer<'de>,
-{
-    let opt: Option<T> = Option::deserialize(deserializer)?;
-
-    Ok(opt.unwrap_or_default())
-}
-
-#[derive(Deserialize, Debug)]
 pub struct Article {
-    #[serde(deserialize_with = "deserialize_null_default")]
-    pub title: String,
-    pub url: String,
+    title: String,
+    url: String,
 }
 
 impl Article {
@@ -101,9 +85,9 @@ pub struct NewsAPI {
 impl NewsAPI {
     pub fn new(api_key: &str) -> NewsAPI {
         NewsAPI {
-            api_key: (api_key.to_string()),
-            endpoint: (Endpoint::TopHeadlines),
-            country: (Country::Us),
+            api_key: api_key.to_string(),
+            endpoint: Endpoint::TopHeadlines,
+            country: Country::Us,
         }
     }
 
@@ -118,24 +102,21 @@ impl NewsAPI {
     }
 
     fn prepare_url(&self) -> Result<String, NewsApiError> {
-        let mut url: Url = Url::parse(BASE_URL)?;
-
+        let mut url = Url::parse(BASE_URL)?;
         url.path_segments_mut()
             .unwrap()
             .push(&self.endpoint.to_string());
 
-        let country: String = format!("country={}", self.country.to_string());
-
+        let country = format!("country={}", self.country.to_string());
         url.set_query(Some(&country));
 
         Ok(url.to_string())
     }
 
     pub fn fetch(&self) -> Result<NewsAPIResponse, NewsApiError> {
-        let url: String = self.prepare_url()?;
-        let req: ureq::Request = ureq::get(&url).set("Authorization", &self.api_key);
+        let url = self.prepare_url()?;
+        let req = ureq::get(&url).set("Authorization", &self.api_key);
         let response: NewsAPIResponse = req.call()?.into_json()?;
-
         match response.status.as_str() {
             "ok" => return Ok(response),
             _ => return Err(map_response_err(response.code)),
@@ -144,22 +125,21 @@ impl NewsAPI {
 
     #[cfg(feature = "async")]
     pub async fn fetch_async(&self) -> Result<NewsAPIResponse, NewsApiError> {
-        let url: String = self.prepare_url()?;
-        let client: reqwest::Client = reqwest::Client::new();
-
-        let request: reqwest::Request = client
+        let url = self.prepare_url()?;
+        let client = reqwest::Client::new();
+        let request = client
             .request(Method::GET, url)
             .header("Authorization", &self.api_key)
             .header("User-Agent", "clinews")
             .build()
-            .map_err(|e: reqwest::Error| NewsApiError::AsyncRequestFailed(e))?;
+            .map_err(|e| NewsApiError::AsyncRequestFailed(e))?;
 
         let response: NewsAPIResponse = client
             .execute(request)
             .await?
             .json()
             .await
-            .map_err(|e: reqwest::Error| NewsApiError::AsyncRequestFailed(e))?;
+            .map_err(|e| NewsApiError::AsyncRequestFailed(e))?;
 
         match response.status.as_str() {
             "ok" => return Ok(response),
