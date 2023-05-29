@@ -26,7 +26,7 @@ async fn main() -> Result<(), Box<dyn Error>> {
         .country(Country::Us);
 
     let newsapi_response: newsapi::NewsAPIResponse = newsapi.fetch_async().await?;
-    render_articles(&newsapi_response.articles());
+    render_articles(newsapi_response.articles());
 
     Ok(())
 }

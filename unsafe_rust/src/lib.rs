@@ -156,7 +156,7 @@ impl<T> Vec<T> {
 
     pub fn drain(&mut self) -> Drain<T> {
         unsafe {
-            let iter = RawValIter::new(&self);
+            let iter: RawValIter<T> = RawValIter::new(&self);
 
             // this is a mem::forget safety thing. If Drain is forgotten, we just
             // leak the whole Vec's contents. Also we need to do this *eventually*
@@ -362,7 +362,7 @@ impl<T> Deref for Arc<T> {
     type Target = T;
 
     fn deref(&self) -> &T {
-        let inner = unsafe { self.ptr.as_ref() };
+        let inner: &ArcInner<T> = unsafe { self.ptr.as_ref() };
         &inner.data
     }
 }
@@ -402,3 +402,5 @@ impl<T> Drop for Arc<T> {
         }
     }
 }
+
+pub mod vec;
