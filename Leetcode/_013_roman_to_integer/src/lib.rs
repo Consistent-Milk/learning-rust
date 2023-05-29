@@ -1,37 +1,29 @@
-use std::collections::HashMap;
-
 pub struct Solution;
 
 impl Solution {
     pub fn roman_to_int(s: String) -> i32 {
-        let map: HashMap<char, i32> = HashMap::from([
-            ('I', 1),
-            ('V', 5),
-            ('X', 10),
-            ('L', 50),
-            ('C', 100),
-            ('D', 500),
-            ('M', 1000),
-        ]);
-
-        let mut sum: i32 = 0;
-        let mut last: i32 = 0;
-
-        for c in s.chars() {
-            if let Some(&v) = map.get(&c) {
-                if v > last {
-                    sum += v - 2 * last;
-                } else {
-                    sum += v
-                }
-                last = v;
+        let (mut ans, mut temp) = (0, 0);
+        for i in s.chars().rev() {
+            let val = match i {
+                'I' => 1,
+                'V' => 5,
+                'X' => 10,
+                'L' => 50,
+                'C' => 100,
+                'D' => 500,
+                'M' => 1000,
+                _ => 0,
+            };
+            if val >= temp {
+                ans+=val
+            } else {
+                ans -= val
             }
+            temp = val
         }
-
-        sum
+        ans
     }
 }
-
 #[cfg(test)]
 mod tests {
     use super::Solution;
