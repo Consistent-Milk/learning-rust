@@ -12,7 +12,7 @@ fn test_121() {
 
     let result: bool = Solution::is_palindrome(x);
 
-    assert_eq!(result, true);
+    assert!(result);
 }
 
 #[test]
@@ -21,7 +21,7 @@ fn test_neg_121() {
 
     let result: bool = Solution::is_palindrome(x);
 
-    assert_eq!(result, false);
+    assert!(!result);
 }
 
 #[test]
@@ -30,5 +30,5 @@ fn test_10() {
 
     let result: bool = Solution::is_palindrome(x);
 
-    assert_eq!(result, false);
+    assert!(!result);
 }

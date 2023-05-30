@@ -6,6 +6,7 @@ impl Solution {
     pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
         let mut res: Vec<Vec<i32>> = vec![];
         let n: usize = nums.len();
+        
         if n < 3 {
             return res;
         }
@@ -15,11 +16,11 @@ impl Solution {
         for i in 0..n - 2 {
             let a: i32 = nums[i];
 
-            if nums[i] > 0 {
+            if a > 0 {
                 break;
             }
 
-            if i > 0 && nums[i] == nums[i - 1] {
+            if i > 0 && a == nums[i - 1] {
                 continue;
             }
 
@@ -29,6 +30,7 @@ impl Solution {
             while j < k {
                 let b: i32 = nums[j];
                 let c: i32 = nums[k];
+
                 let sum: i32 = a + b + c;
 
                 match sum.cmp(&0) {

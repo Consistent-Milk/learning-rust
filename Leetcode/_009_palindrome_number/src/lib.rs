@@ -15,6 +15,6 @@ impl Solution {
             number /= 10;
         }
 
-        return x == reversed;
+        x == reversed
     }
 }
