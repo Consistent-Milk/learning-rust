@@ -98,3 +98,26 @@ impl Solution {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_1() {
+        let l1: Option<Box<ListNode>> = list!(2, 4, 3);
+        let l2: Option<Box<ListNode>> = list!(5, 6, 4);
+        let l3: Option<Box<ListNode>> = list!(7, 0, 8);
+
+        assert_eq!(Solution::add_two_numbers(l1, l2), l3);
+    }
+
+    #[test]
+    fn test_2() {
+        let l1: Option<Box<ListNode>> = list!(2, 4, 3);
+        let l2: Option<Box<ListNode>> = list!(5, 6, 4);
+        let l3: Option<Box<ListNode>> = list!(7, 0, 8);
+
+        assert_eq!(Solution::_add_two_numbers_test(l1, l2), l3);
+    }
+}
