@@ -1,10 +1,14 @@
+#![allow(unused_mut)]
+
 #[macro_export]
 macro_rules! avec {
     ($($element:expr),*) => {{
         // check that count is const
         const C: usize = $crate::count![@COUNT; $($element),*];
 
-        #[allow(unused_mut)]
+        // I have no idea why this is considered as an unused mutable
+        // we are clearly mutating it in the next line
+        // maybe macro syntax is still not supported well enough?
         let mut vs = Vec::with_capacity(C);
         $(vs.push($element);)*
         vs
