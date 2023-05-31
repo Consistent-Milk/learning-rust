@@ -1,4 +1,5 @@
-use princeton_algorithms_course::*;
+use princeton_algorithms_course::algorithms::quick_find_uf::QuickFindUF;
+use princeton_algorithms_course::algorithms::quick_union_uf::QuickUnionUF;
 
 fn main() {
     let n: i32 = 10;
