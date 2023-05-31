@@ -84,14 +84,28 @@ mod tests {
     fn test_2() {
         let mut qu: QuickUnionUF = QuickUnionUF::new(10);
         
-        // 1 <- 0
+        // 1 -> 0
         qu.union(0, 1);
         
-        // 2 <- 1 <- 0
+        // 2 -> 1 -> 0
         qu.union(1, 2);
 
         for i in 0..=2 {
             assert_eq!(qu.root(i), 2);
+        }
+    }
+
+    /// Check if union affects other roots
+    #[test]
+    fn test_3() {
+        let mut qu: QuickUnionUF = QuickUnionUF::new(10);
+
+        // Should assign 1 as 0's root and 1 to itself
+        // and other indices from 2-9 should be mapped to themselves
+        qu.union(0, 1);
+
+        for i in 2..=9 {
+            assert_eq!(qu.root(i), i);
         }
     }
 }
