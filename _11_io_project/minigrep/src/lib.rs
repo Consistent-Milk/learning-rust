@@ -9,7 +9,8 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn build(args: &[String]) -> Result<Config, &'static str> {
+    // Why use &[String] instead of Vec<String> ?
+    pub fn build(args: &Vec<String>) -> Result<Config, &'static str> {
         if args.len() < 3 {
             return Err("Not enough arguments.");
         }
