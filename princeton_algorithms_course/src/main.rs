@@ -2,8 +2,8 @@ use princeton_algorithms_course::algorithms::quick_find_uf::QuickFindUF;
 use princeton_algorithms_course::algorithms::quick_union_uf::QuickUnionUF;
 
 fn main() {
-    let n: i32 = 10;
-    let mut v: Vec<i32> = Vec::new();
+    let n: usize = 10;
+    let mut v: Vec<usize> = Vec::new();
 
     for i in 0..n {
         v.push(i);
