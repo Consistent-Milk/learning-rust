@@ -1,3 +1,5 @@
+use std::fmt::{self, Display, Formatter};
+
 use crate::algorithms::weighted_quick_union_uf::WeightedQuickUnionUF;
 
 pub struct Percolation {
@@ -24,7 +26,7 @@ impl Percolation {
 
     fn validate(&self, row: usize, col: usize) {
         if (row < 1) | (row > self.size) | (col < 1) | (col > self.size) {
-            panic!("Illegal value of row or column");
+            eprint!("Illegal");
         }
     }
 
@@ -53,7 +55,9 @@ impl Percolation {
     }
 
     pub fn open(&mut self, row: usize, col: usize) {
-        if self.is_open(row, col) {}
+        if self.is_open(row, col) {
+            return;
+        }
 
         self.grid[row - 1][col - 1] = true;
         self.total_opened += 1;
@@ -76,7 +80,7 @@ impl Percolation {
         } else if self.is_open(row + 1, col) {
             self.union_find
                 .union(self.get_id(row, col), self.get_id(row + 1, col));
-            self.union_find
+            self.extra_union_find
                 .union(self.get_id(row, col), self.get_id(row + 1, col));
         }
 
@@ -93,5 +97,27 @@ impl Percolation {
             self.extra_union_find
                 .union(self.get_id(row, col), self.get_id(row, col + 1));
         }
+    }
+}
+
+impl Display for Percolation {
+    fn fmt(&self, f: &mut Formatter) -> fmt::Result {
+        let vec: &Vec<Vec<bool>> = &self.grid;
+
+        write!(f, "[")?;
+
+        // Iterate over `v` in `vec` while enumerating the iteration
+        // count in `count`.
+        for (count, v) in vec.iter().enumerate() {
+            // For every element except the first, add a comma.
+            // Use the ? operator to return on errors.
+            if count != 0 {
+                write!(f, ", ")?;
+            }
+            write!(f, "{}: {:?}", count, v)?;
+        }
+
+        // Close the opened bracket and return a fmt::Result value.
+        write!(f, "]")
     }
 }

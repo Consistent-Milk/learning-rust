@@ -14,7 +14,7 @@ impl WeightedQuickUnionUF {
 
         for i in 0..n {
             parent[i] = i;
-            size[i] = i;
+            size[i] = 1;
         }
 
         WeightedQuickUnionUF {
@@ -45,6 +45,10 @@ impl WeightedQuickUnionUF {
     pub fn union(&mut self, p: usize, q: usize) {
         let root_p: usize = self.find(p);
         let root_q: usize = self.find(q);
+
+        if root_p == root_q {
+            return;
+        }
 
         if self.size[root_p] < self.size[root_q] {
             self.parent[root_p] = root_q;

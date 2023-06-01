@@ -1,32 +1,47 @@
+#![allow(unused_imports)]
+use std::fs;
+use std::ops::Deref;
+
 use princeton_algorithms_course::algorithms::quick_find_uf::QuickFindUF;
 use princeton_algorithms_course::algorithms::quick_union_uf::QuickUnionUF;
+use princeton_algorithms_course::percolation::percolation_alg::Percolation;
 
 fn main() {
-    let n: usize = 10;
-    let mut v: Vec<usize> = Vec::new();
+    let contents: String = fs::read_to_string("src/percolation/input/greeting57.txt").unwrap();
 
-    for i in 0..n {
-        v.push(i);
+    let lines: Vec<&str> = contents.lines().collect();
+
+    let mut split_lines: Vec<Vec<&str>> = Vec::new();
+
+    for line in lines {
+        let mut split_line: Vec<&str> = line.trim_start().split(' ').collect();
+
+        if split_line.len() == 3 {
+            split_line.remove(1);
+        }
+
+        split_lines.push(split_line);
     }
 
-    println!("{:?}", v);
+    let n: usize = split_lines[0][0].parse().unwrap();
 
-    let mut qf: QuickFindUF = QuickFindUF::new(n);
+    let mut perc: Percolation = Percolation::new(n);
 
-    qf.union(0, 1);
-    qf.union(1, 3);
+    println!("{}", n);
 
-    println!("\n0 and 3 connected -> {}", qf.connected(0, 3));
-    println!("1 and 5 connected -> {}", qf.connected(1, 5));
-    println!("{}", qf);
+    for val in split_lines.iter().skip(1) {
+        let row: usize = val[0].deref().parse().unwrap();
+        let col: usize = val[1].deref().parse().unwrap();
 
-    let mut qu: QuickUnionUF = QuickUnionUF::new(n);
+        println!("{} {}", row, col);
 
-    qu.union(4, 3);
-    qu.union(3, 8);
-    qu.union(9, 4);
+        if (row == 0) | (col == 0) {
+            continue;
+        }
 
-    println!("\n3 and 9 connected -> {}", qu.connected(3, 9));
-    println!("0 and 1 connected -> {}", qu.connected(0, 1));
-    println!("{}", qu);
+        perc.open(row, col);
+        println!("{} {} is open: {}", row, col, perc.is_open(row, col));
+    }
+
+    println!("Percolates: {}", perc.percolates());
 }
