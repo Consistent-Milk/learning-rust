@@ -39,7 +39,7 @@ impl Percolation {
         self.grid[row - 1][col - 1]
     }
 
-    pub fn is_full(&self, row: usize, col: usize) -> bool {
+    pub fn is_full(&mut self, row: usize, col: usize) -> bool {
         self.validate(row, col);
         self.extra_union_find.find(self.get_id(row, col))
             == self.extra_union_find.find(self.size * self.size)
@@ -49,7 +49,7 @@ impl Percolation {
         self.total_opened
     }
 
-    pub fn percolates(&self) -> bool {
+    pub fn percolates(&mut self) -> bool {
         self.union_find.find(self.size * self.size)
             == self.union_find.find(self.size * self.size + 1)
     }
@@ -102,22 +102,18 @@ impl Percolation {
 
 impl Display for Percolation {
     fn fmt(&self, f: &mut Formatter) -> fmt::Result {
-        let vec: &Vec<Vec<bool>> = &self.grid;
 
-        write!(f, "[")?;
-
-        // Iterate over `v` in `vec` while enumerating the iteration
-        // count in `count`.
-        for (count, v) in vec.iter().enumerate() {
-            // For every element except the first, add a comma.
-            // Use the ? operator to return on errors.
-            if count != 0 {
-                write!(f, ", ")?;
+        for i in 1..self.size {
+            for j in 1..self.size {
+                let s = match self.is_open(i, j) {
+                    true => "T",
+                    false => "F"
+                };
+                write!(f, " ({}, {}, {}) ", i, j, s)?;
             }
-            write!(f, "{}: {:?}", count, v)?;
+            writeln!(f)?;
         }
 
-        // Close the opened bracket and return a fmt::Result value.
-        write!(f, "]")
+        write!(f, "")
     }
 }

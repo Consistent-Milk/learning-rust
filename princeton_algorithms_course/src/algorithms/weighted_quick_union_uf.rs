@@ -24,11 +24,11 @@ impl WeightedQuickUnionUF {
         }
     }
 
-    pub fn count(&self) -> usize {
+    pub fn count(&mut self) -> usize {
         self.count
     }
 
-    pub fn find(&self, mut p: usize) -> usize {
+    pub fn find(&mut self, mut p: usize) -> usize {
         self.validate(p);
 
         while p != self.parent[p] {
@@ -38,7 +38,7 @@ impl WeightedQuickUnionUF {
         p
     }
 
-    pub fn connected(&self, p: usize, q: usize) -> bool {
+    pub fn connected(&mut self, p: usize, q: usize) -> bool {
         self.find(p) == self.find(q)
     }
 
@@ -61,7 +61,7 @@ impl WeightedQuickUnionUF {
         self.count -= 1;
     }
 
-    fn validate(&self, p: usize) {
+    fn validate(&mut self, p: usize) {
         let n: usize = self.parent.len();
 
         if p >= n {
