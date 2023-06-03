@@ -8,34 +8,37 @@ pub struct WeightedQuickUnionUF {
 
 impl WeightedQuickUnionUF {
     pub fn new(n: usize) -> Self {
-        let count: usize = n;
-        let mut parent: Vec<usize> = vec![0; n];
-        let mut size: Vec<usize> = vec![0; n];
-
-        for i in 0..n {
-            parent[i] = i;
-            size[i] = 1;
-        }
+        let count = n;
+        let parent = (0..n).collect();
+        let size = vec![1; n];
 
         WeightedQuickUnionUF {
-            parent: (parent),
-            size: (size),
-            count: (count),
+            parent,
+            size,
+            count,
         }
     }
 
-    pub fn count(&mut self) -> usize {
+    pub fn count(&self) -> usize {
         self.count
     }
 
-    pub fn find(&mut self, mut p: usize) -> usize {
+    pub fn find(&mut self, p: usize) -> usize {
         self.validate(p);
-
-        while p != self.parent[p] {
-            p = self.parent[p];
+        let mut root = p;
+        while root != self.parent[root] {
+            root = self.parent[root];
         }
 
-        p
+        // Perform path compression
+        let mut current = p;
+        while current != root {
+            let next = self.parent[current];
+            self.parent[current] = root;
+            current = next;
+        }
+
+        root
     }
 
     pub fn connected(&mut self, p: usize, q: usize) -> bool {
@@ -43,8 +46,8 @@ impl WeightedQuickUnionUF {
     }
 
     pub fn union(&mut self, p: usize, q: usize) {
-        let root_p: usize = self.find(p);
-        let root_q: usize = self.find(q);
+        let root_p = self.find(p);
+        let root_q = self.find(q);
 
         if root_p == root_q {
             return;
@@ -61,11 +64,10 @@ impl WeightedQuickUnionUF {
         self.count -= 1;
     }
 
-    fn validate(&mut self, p: usize) {
-        let n: usize = self.parent.len();
-
+    fn validate(&self, p: usize) {
+        let n = self.parent.len();
         if p >= n {
-            panic!("Index out of bound.");
+            panic!("Index out of bounds");
         }
     }
 }
