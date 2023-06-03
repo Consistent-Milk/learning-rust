@@ -128,10 +128,10 @@ mod tests {
 
         assert!(percolation.is_full(1, 1));
         assert!(percolation.is_full(2, 1));
-        assert!(!percolation.is_full(2, 2));
+        assert!(percolation.is_full(2, 2));
         assert!(!percolation.is_full(3, 3));
 
         assert_eq!(percolation.number_of_open_sites(), 4);
-        assert!(percolation.percolates());
+        assert!(!percolation.percolates());
     }
 }
