@@ -110,8 +110,38 @@ mod tests {
     use super::*;
 
     #[test]
-    fn test_percolation() {
+    fn test_percolates() {
         let mut percolation = Percolation::new(3);
+        assert!(!percolation.percolates());
+
+        percolation.open(1, 1);
+        percolation.open(2, 1);
+        percolation.open(2, 2);
+        percolation.open(3, 2);
+        percolation.open(3, 3);
+
+        assert!(percolation.is_open(1, 1));
+        assert!(percolation.is_open(2, 1));
+        assert!(percolation.is_open(2, 2));
+        assert!(percolation.is_open(3, 2));
+        assert!(percolation.is_open(3, 3));
+        assert!(!percolation.is_open(3, 1));
+        assert!(!percolation.is_open(1, 3));
+
+        assert!(percolation.is_full(1, 1));
+        assert!(percolation.is_full(2, 1));
+        assert!(percolation.is_full(2, 2));
+        assert!(percolation.is_full(3, 2));
+        assert!(percolation.is_full(3, 3));
+        assert!(!percolation.is_full(3, 1));
+
+        assert_eq!(percolation.number_of_open_sites(), 5);
+        assert!(percolation.percolates());
+    }
+
+    #[test]
+    fn test_does_not_percolate() {
+        let mut percolation: Percolation = Percolation::new(3);
         assert!(!percolation.percolates());
 
         percolation.open(1, 1);
