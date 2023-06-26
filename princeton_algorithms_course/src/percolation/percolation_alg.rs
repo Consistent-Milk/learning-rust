@@ -11,7 +11,7 @@ pub struct Percolation {
 
 impl Percolation {
     pub fn new(n: usize) -> Self {
-        let union_find = WeightedQuickUnionUF::new(n * n + 2);
+        let union_find: WeightedQuickUnionUF = WeightedQuickUnionUF::new(n * n + 2);
 
         Percolation {
             size: n,

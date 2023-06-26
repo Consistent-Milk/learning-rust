@@ -3,6 +3,7 @@
 #![allow(clippy::needless_range_loop)]
 #![allow(unused)]
 
+use regex::Regex;
 use std::fs::{self, File};
 use std::io::{BufRead, BufReader};
 use std::ops::Deref;
@@ -15,7 +16,7 @@ use princeton_algorithms_course::algorithms::quick_union_uf::QuickUnionUF;
 use princeton_algorithms_course::percolation::percolation_alg::Percolation;
 
 fn main() {
-    let input_files = vec!["input.txt", "percolates.txt"];
+    let input_files: Vec<&str> = vec!["input.txt", "percolates.txt"];
 
     for file in input_files {
         test_percolation(file);
@@ -29,7 +30,7 @@ fn test_percolation(filename: &str) {
 
     let mut split_lines: Vec<Vec<&str>> = contents
         .lines()
-        .map(|line| {
+        .map(|line: &str| {
             let mut split_line: Vec<&str> = line.trim().split(' ').collect();
             if split_line.len() == 3 {
                 split_line.remove(1);
@@ -42,7 +43,7 @@ fn test_percolation(filename: &str) {
 
     split_lines.drain(0..1); // Remove the first line from split_lines
 
-    let mut perc = Percolation::new(n);
+    let mut perc: Percolation = Percolation::new(n);
 
     for val in split_lines {
         let row: usize = val[0].parse().unwrap();
