@@ -20,7 +20,7 @@ impl Solution {
         }
         return vec![-1, -1];
     }
-}
+} 
 
 fn test() -> bool {
     let nums: Vec<i32> = vec![2, 7, 11, 15];

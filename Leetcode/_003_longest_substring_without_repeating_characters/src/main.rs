@@ -21,26 +21,20 @@ impl Solution {
         let mut l: usize = 0;
 
         for (index, value) in s.char_indices() {
-            let end: Option<usize> = hm.insert(value, index);
-            // if let Some(end) = hm.insert(c, r) {
-            //     l = usize::max(l, end + 1);
-            // }
-
-            match end {
-                Some(end) => l = usize::max(l, end + 1),
-                None => (),
+            if let Some(end) = hm.insert(value, index) {
+                l = usize::max(l, end +1);
             }
 
             max = usize::max(index - l + 1, max);
         }
-        return max as i32;
+        max as i32
     }
 }
 
 fn test() -> bool {
     let s: String = String::from("Helllo");
 
-    return Solution::length_of_longest_substring(s) == 3;
+    Solution::length_of_longest_substring(s) == 3
 }
 
 fn main() {

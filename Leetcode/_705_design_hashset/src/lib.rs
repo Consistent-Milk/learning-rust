@@ -23,6 +23,7 @@ impl MyHashSet {
         }
 
         let bucket: &mut Vec<i32> = &mut self.buckets[key as usize % self.nb_buckets];
+        
         if !bucket.contains(&key) {
             bucket.push(key);
             self.nb_stored_elements += 1;
@@ -49,12 +50,15 @@ impl MyHashSet {
             bucket_size,
             nb_stored_elements: 0,
         };
+
         hashset.buckets.reserve(hashset.nb_buckets);
+
         for _ in 0..hashset.nb_buckets {
             let mut bucket: Vec<i32> = Vec::new();
             bucket.reserve(hashset.bucket_size);
             hashset.buckets.push(bucket);
         }
+
         hashset
     }
 
